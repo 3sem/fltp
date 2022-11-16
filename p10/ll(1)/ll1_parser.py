@@ -13,34 +13,34 @@ def parse(user_input, start_symbol, parsingTable):
     input_len = len(user_input)
     index = 0
 
-    while len(stack) > 0:
-        top = stack[len(stack) - 1]
-        print("Top =>", top)
-        current_input = user_input[index]
+    while len(stack) > 0: # while stack is not empty
+        top = stack[len(stack) - 1] # get top of the stack
+        print("Top =>", top) 
+        current_input = user_input[index] # get symbol from input string
         print("Current_Input => ", current_input)
 
-        if top == current_input:
-            stack.pop()
-            index = index + 1
+        if top == current_input: # if symbol is equal to stack top element
+            stack.pop() # pop this element
+            index = index + 1 # symbol is accepted -- go to the next symbol
         else:
-            key = top, current_input
+            key = top, current_input # get the pair (stack top, symbol)
             print(key)
 
-            if key not in parsingTable:
+            if key not in parsingTable: # if not in parsing table -- string is not accepted. End.
                 no_acc_flag = True
                 break
 
-            value = parsingTable[key]
-            if value != 'ɛ':
-                value = value[::-1]
+            value = parsingTable[key] # else, get the parsing table values
+            if value != 'ɛ': # if not empty symbol
+                value = value[::-1] # make a list of values in reverse order
                 value = list(value)
 
-                stack.pop()
+                stack.pop() # pop the element
 
                 for element in value:
-                    stack.append(element)
+                    stack.append(element) # push on the stack all of the values
             else:
-                stack.pop()
+                stack.pop() # if value is empty symbol, pop
 
     if no_acc_flag == False:
         print("String accepted!")
