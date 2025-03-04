@@ -1,3 +1,27 @@
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|   C Source Code   |       |   Abstract Syntax |       |   LLVM IR Code    |
+|                   |       |   Tree (AST)      |       |                   |
+|  int main() {     |       |                   |       |  define i32 @main |
+|    int a = 10;    |       |  FunctionDecl     |       |  () {             |
+|    int b = 20;    |  -->  |  |-VarDecl (a)    |  -->  |    %a = alloca i32|
+|    int c = a + b; |       |  |-VarDecl (b)    |       |    store i32 10,  |
+|    return c;      |       |  |-BinaryOperator |       |      i32* %a      |
+|  }                |       |  |-ReturnStmt     |       |    %b = alloca i32|
+|                   |       |                   |       |    store i32 20,  |
++-------------------+       +-------------------+       |      i32* %b      |
+                                                       |    %1 = load i32, |
+                                                       |      i32* %a      |
+                                                       |    %2 = load i32, |
+                                                       |      i32* %b      |
+                                                       |    %c = add i32   |
+                                                       |      %1, %2       |
+                                                       |    ret i32 %c     |
+                                                       |  }                |
+                                                       +-------------------+
+
+
+
 ## Анализ AST: Libclang
 
 
