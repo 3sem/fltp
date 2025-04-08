@@ -5,6 +5,11 @@ define i32 @square(i32) local_unnamed_addr #0 {
     %2 = mul nsw i32 %0, 5
     ret i32 %2
 }
+
+;define i32 @main() {
+;    %result = call i32 @square(i32 10)
+;    ret i32 %result
+;}
 ```
 
 ## 2. Compile using llc and dump all stages:
