@@ -16,6 +16,14 @@ define i32 @square(i32) local_unnamed_addr #0 {
 
 -O0  -print-before-all -print-after-all code.llvm -o code.s
 
+Result:
+
+```asm
+square:                                 # @square
+        imul    eax, edi, 5
+        ret
+```
+
 ## 3. Log output contains:
 ```text
 *** IR Dump Before Pre-ISel Intrinsic Lowering (pre-isel-intrinsic-lowering) ***
