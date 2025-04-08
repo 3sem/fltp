@@ -1166,11 +1166,3 @@ LLVM performs a series of transformations on the Intermediate Representation (IR
     - **Effect in Log**: Machine instructions like `IMUL32rri` and `RET64` generate the `square` function’s assembly.
 
 ---
-
-### **Summary**
-- The logs reflect the transformation of a simple multiplication function (`square`) across LLVM's pipeline.
-- Since the function is straightforward, most stages do not modify the IR or machine code.
-- The significant transformations are in instruction selection, register allocation, and prologue/epilogue insertion, resulting in the final assembly output.
-
----
-undefined: https://labs.perplexity.ai/?utm_source=copy_output
