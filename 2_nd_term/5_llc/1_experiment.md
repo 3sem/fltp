@@ -12,7 +12,7 @@ define i32 @square(i32) local_unnamed_addr #0 {
 -O0  -print-before-all -print-after-all code.llvm -o code.s
 
 ## 3. Log output contains:
-
+```text
 *** IR Dump Before Pre-ISel Intrinsic Lowering (pre-isel-intrinsic-lowering) ***
 ; ModuleID = '<source>'
 source_filename = "<source>"
@@ -1070,14 +1070,11 @@ bb.0 (%ir-block.1):
 # End machine code for function square.
 
 Compiler returned: 0
+```
 
 ## 4. All the stages during llc means:
 
-The log provided reflects the different stages of the LLVM compilation pipeline during the process of lowering and optimizing the input LLVM IR to generate the final machine code for the `square` function. Below is an explanation of each stage from the log:
-
----
-
-### **High-Level Overview of Stages**
+The log provided reflects the different stages of the LLVM compilation pipeline during the process of lowering and optimizing the input LLVM IR to generate the final machine code for the function. 
 LLVM performs a series of transformations on the Intermediate Representation (IR) to optimize it and prepare it for generating machine-specific code. These stages include lowering certain abstractions, expanding instructions, and generating machine code.
 
 ---
