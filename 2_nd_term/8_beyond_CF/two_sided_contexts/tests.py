@@ -112,3 +112,41 @@ def test_xml_check():
 # NB: 
 # Stateful Contexts (e.g., indentation stacks, tag matching) often require augmenting the parser with external state.
 # Non-Context-Free Patterns (e.g., tag matching) can be handled by combining CYK with runtime checks.
+
+def test_anbncn():
+  # Grammar for aⁿbⁿcⁿ
+  grammar = {
+      "S": [["A", "T"]],  # S → AT (T will handle B and C)
+      "T": [["B", "C"]],  # T → BC
+      "A": [["a", "A"], ["a"]],  # A → aA | a
+      "B": [["b", "B"], ["b"]],  # B → bB | b
+      "C": [["c", "C"], ["c"]],  # C → cC | c
+  }
+  
+  # Context constraints:
+  # - B must have equal number of A's to its left
+  # - C must have equal number of B's to its left
+  left_context = {
+      "B": {"A"},  # B requires A to its left
+      "C": {"B"}   # C requires B to its left
+  }
+  
+  # Right context ensures balancing (implemented via dynamic checks during parsing)
+  right_context = {}  # Not needed for this example
+  
+  parser = TwoSidedContextCYK(grammar, left_context, right_context, "S")
+  
+  # Test cases
+  test_cases = [
+      ("abc", True),
+      ("aabbcc", True),
+      ("aaabbbccc", True),
+      ("aabbc", False),
+      ("abbccc", False),
+      ("aaabbbcc", False),
+  ]
+  
+  for input_str, expected in test_cases:
+      result = parser.parse(input_str)
+      print(f"Input: '{input_str}'\tExpected: {expected}\tActual: {result}")
+      assert result == expected
