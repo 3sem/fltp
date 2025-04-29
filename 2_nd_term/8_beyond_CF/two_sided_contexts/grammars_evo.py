@@ -15,7 +15,7 @@ The paper **"Grammars with Two-Sided Contexts"** introduces and builds upon seve
 - A string must satisfy **all** conjuncts to derive \( A \).  
 - **Example**:  
   \( S \rightarrow AB \ \& \ CD \) means a string must be both derivable as \( AB \) **and** \( CD \).  
-- **Key property**: Still context-free in the sense that substrings are defined independently of their context.
+
 
 ---
 
@@ -68,10 +68,10 @@ The paper **"Grammars with Two-Sided Contexts"** introduces and builds upon seve
 | Grammar Form               | Operators          | Context Sensitivity | Example Use Case               |
 |----------------------------|--------------------|---------------------|--------------------------------|
 | **Context-Free (CFG)**     | None               | No                  | Basic syntax rules             |
-| **Conjunctive**            | `&`                | No                  | Intersection of languages      |
-| **Boolean**                | `&`, `¬`           | No                  | Exclusion patterns             |
-| **One-Sided Context**      | `<`, `≤`           | Left only           | Declarations before use        |
-| **Two-Sided Context**      | `<`, `≤`, `>`, `≥` | Left and right      | Prototypes, graph reachability |
+| **Conjunctive**            | `&`                | "Mildly"            | Intersection of languages      |
+| **Boolean**                | `&`, `¬`           | "Greater than Conj. | Exclusion patterns             |
+| **One-Sided Context**      | `<`, `≤`           | Left app. only      | Declarations before use        |
+| **Two-Sided Context**      | `<`, `≤`, `>`, `≥` | Left and right app  | Prototypes, graph reachability |
 
 ---
 
