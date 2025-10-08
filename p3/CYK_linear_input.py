@@ -31,9 +31,24 @@ def search_lhs_terminal_rule(term=None):
 def logM(M, prefix_msg=None, postfix_msg=None):
     if prefix_msg:
         print(prefix_msg)
-    for i in M:
-        print(i)
-    return
+    
+    # Find the maximum width needed for any element in the matrix
+    max_width = 0
+    for row in M:
+        for item in row:
+            item_str = str(item)
+            if len(item_str) > max_width:
+                max_width = len(item_str)
+    
+    # Print each row with aligned columns
+    for row in M:
+        # Convert all elements to strings and format with padding
+        formatted_row = [f" {str(item):>{max_width}} " for item in row]
+        print("[" + "".join(formatted_row) + "]")
+    
+    if postfix_msg:
+        print(postfix_msg)
+    return M
 
 
 def logSubStr(s, substr_len, prefix_msg=None, postfix_msg=None, show_slots=False):
@@ -49,6 +64,7 @@ def logSubStr(s, substr_len, prefix_msg=None, postfix_msg=None, show_slots=False
 
 
 def CYK(inp="", G = None, log=True):
+    print(f"-----------------------\nParsing string {inp}")
     M = list()
     for i in range(len(inp)+1):
         M.append(['0' for i in range(len(inp)+1)])
