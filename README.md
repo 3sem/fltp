@@ -5,7 +5,7 @@ Formal Languages Theory in Practice [MIPT Course]
 
 # Конспект лекций (обновляется непрерывно):
 
-https://github.com/nefanov/fltp/blob/main/FLTP_lectures.pdf
+[https://github.com/nefanov/fltp/blob/main/FLTP_lectures.pdf](https://github.com/3sem/fltp/blob/main/FLTP_lectures%20(6).pdf)
 
 # Литература:
 
